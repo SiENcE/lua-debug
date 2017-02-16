@@ -22,20 +22,16 @@ module.exports =
       type:'integer'
       default:'14400000'
 
-
-  luaDebugView:null
+  luaEditor:null
+  oDebugServer:null
   codeEventEmitter:null
   oCodeRunner:null
-  oDebugServer:null
-  luaEditor:null
+  luaDebugView:null
   oBreakpointStore:null
 
-
   activate:(state) ->
-
+    console.log "activate lua-debug"
     @luaEditor = new LuaEditor()
-
-
     @oDebugServer = new DebugSocket()
     @codeView = new CodeView()
     @codeEventEmitter = new CodeEventEmitter(@codeView, @oDebugServer)
@@ -43,9 +39,6 @@ module.exports =
     @luaDebugView = new LuaDebugView(state, @codeEventEmitter)
     @oBreakpointStore = new BreakpointStore(@codeEventEmitter)
     @luaEditor.init(@oBreakpointStore)
-
-
-
 
   deactivate: ->
     # subscriptions.dispose();
@@ -58,8 +51,6 @@ module.exports =
 
   serialize: ->
     luaDebugView:@luaDebugView.serialize()
-
-
 
 #
 # export default {
