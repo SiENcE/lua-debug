@@ -3,7 +3,6 @@ fs = require 'fs'
 path = require 'path'
 os = require 'os'
 remote = require 'remote'
-dialog = remote.require 'dialog'
 
 module.exports =
   LUA_GRAMMAR:'source.lua'
@@ -202,7 +201,7 @@ module.exports.chose_path_d = (callback)->
   @chose_path(['openFile', 'openDirectory'], '', callback)
 
 module.exports.chose_path = (opts=['openFile', "openDirectory"], def_path, callback)->
-  dialog.showOpenDialog title: 'Select', defaultPath:def_path, properties: opts, (cho_path) =>
+  remote.Dialog.showOpenDialog title: 'Select', defaultPath:def_path, properties: opts, (cho_path) =>
     if cho_path
       if callback
         callback(cho_path[0])
