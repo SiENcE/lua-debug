@@ -5,7 +5,7 @@ module.exports =
 class CodeEventEmitter
 
   constructor:(@codeView, @oDebugServer) ->
-    @disposable = new CompositeDisposable
+    @disposable = new CompositeDisposable()
 
   doCodeEmit:(@CodeRunner) ->
 

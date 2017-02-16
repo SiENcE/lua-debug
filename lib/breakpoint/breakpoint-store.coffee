@@ -80,12 +80,12 @@ class BreakpointStore
       # console.log oEditor
 
       atom.workspace.open(oEditor.getPath(), { changeFocus:true }).then (oNewEditor) =>
-        # console.log "after editor open", oNewEditor
+        console.log "after editor open", oNewEditor
         oNewEditor?.setCursorBufferPosition(oPoint)
         @oEditors[sShortFileName] = oNewEditor
 
         if oBPSubList = @oBPMaps[sShortFileName]
-          # console.log "refresh bp ===========", oBPSubList
+          console.log "refresh bp ===========", oBPSubList
           if _.size(oBPSubList) > 0
             ds = oEditor.getLineNumberDecorations(type: "line-number", class: "line-number-blue")
             unless ds.length > 0
