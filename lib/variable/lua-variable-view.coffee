@@ -19,8 +19,8 @@ module.exports = class LuaDebugVarView extends View
 
   initialize:(@sViewName) ->
     # console.log @locv_tree
+    @disposable = new CompositeDisposable()
     @iTestCon = 10
-
 
   show_var_view:() ->
     console.log "show_var_view"
@@ -48,6 +48,11 @@ module.exports = class LuaDebugVarView extends View
     else
       @vVarEleView.refresh_variable(oRe)
 
+  destroy: ->
+    @dispose()
+
+  dispose:->
+    @disposable.dispose()
 
   test:() ->
     @iTestCon = @iTestCon-1
