@@ -89,10 +89,11 @@ module.exports = class LuaDebugView extends View
           #       @table class:'control-tab',outlet:'glv_tree'
 
   initialize:(serializeState, @codeEventEmitter) ->
+    console.log "lua-debug initialize"
     @aBPMap = {}
-    @emitter = new Emitter
+    @emitter = new Emitter()
     # @oDebugServer = new DebugSocket()
-    @disposable = new CompositeDisposable
+    @disposable = new CompositeDisposable()
     # @codeView = new CodeView()
     @codeEventEmitter.doManaEmit(@)
     @luaDebugVarView = new LuaDebugVarView(emp.LOCAL_VAR_VIEW_NAME)
@@ -145,7 +146,7 @@ module.exports = class LuaDebugView extends View
   dispose:()->
     @aBPMap = {}
     @modalPanel.destroy()
-    @disposable?.dispose()
+    @disposable?.dispose() # Dispose of all subscriptions at once
 
   # hanle click callback
   start_server: (event, element) =>
@@ -185,7 +186,7 @@ module.exports = class LuaDebugView extends View
     @vServerStateView.show()
 
   refresh_variable:(fFileName, sVariable) =>
-    # console.log "show variable:+++++++", fFileName, sVariable
+    console.log "show variable:+++++++", fFileName, sVariable
     if typeof(sVariable) is 'string'
       oRe = JSON.parse(sVariable)
     else
