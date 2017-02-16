@@ -4,7 +4,7 @@ CodeDetail = require './code-detail'
 path = require 'path'
 fs = require 'fs'
 
-sCmd = 'lua'
+sCmd = 'love'
 
 module.exports =
 class CodeRunner
