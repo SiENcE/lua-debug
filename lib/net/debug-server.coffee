@@ -180,7 +180,7 @@ module.exports = class DebugSocket
     @close()
 
   close: () ->
-    console.log "Cllose Debug server"
+    console.log "Close Debug server"
     try
       if @oServer
         @oServer.close()
